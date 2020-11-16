@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+            Artemis - Procure a sua música pela letra e mostraremos de quem é!
+        </title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+        />
+        {% endblock head %} {% block extras_css %} {% endblock extras_css %}
+    </head>
+    <body>
+        {% block navbar %}
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                
+
+                <a
+                    role="button"
+                    class="navbar-burger burger"
+                    aria-label="menu"
+                    aria-expanded="false"
+                    data-target="navbarBasicExample"
+                >
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="{{url_for('site.index')}}"
+                        >Home</a
+                    >
+                    <a class="navbar-item" href="{{url_for('site.bands')}}"
+                        >Bandas</a
+                    >
+                    <a class="navbar-item" href="{{url_for('admin.index')}}"
+                        >Admin</a
+                    >
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a
+                                class="button is-secondary"
+                                href="{{url_for('admin.index')}}"
+                                >Log In</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% endblock navbar %} {% block top %} {% endblock top %}
+
+        <section class="hero" >
+            <div class="hero-body">
+                <div class="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <img
+                        src="https://images-platform.99static.com/-Gr8TT4rpX6dyKy9FDNKu2c99Gs=/0x500:1894x2394/500x500/top/smart/99designs-contests-attachments/74/74860/attachment_74860320"
+                        alt="Artemis Logo"
+                        width="200"
+                        style="margin: 50px;"
+                    />
+                    <h2 class="subtitle">
+                      
+                        {% if lyric %} 
+                        <article class="message is-success">
+                          <div class="message-body">
+                            A letra <b>"{{lyric}}"</b> pertence a
+                        banda: <b>{{result}}</b>
+                          </div>
+                        </article>
+                        
+                         {% endif %}
+                    </h2>
+                    {% if lyric == "" %} 
+                    <article class="message is-danger">
+                      <div class="message-body">
+                        É obrigatório digitar a letra de uma música
+                      </div>
+                    </article>
+                  
+                    {%
+                      endif %}
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">{% block main %} {% endblock main %}</div>
+        </section>
+
+        {% block footer %}
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Artemis</strong> by
+                    <ul style="list-style: none;">
+                      <li>Wendel Freitas - 010617031</li>
+                      <li>Jéssica Camaforte - 010617030</li>
+                    </ul>
+                   The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php"
+                        >MIT</a
+                    >. The website content is licensed
+                    <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        >CC BY NC SA 4.0</a
+                    >.
+                </p>
+            </div>
+        </footer>
+        {% endblock footer %}
+    </body>
+</html>

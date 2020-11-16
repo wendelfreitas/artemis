@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block top %} {% endblock top %} {% block main %} {%
+if lyric %}
+<a href="/">Voltar</a>
+{% endif %} {% if lyric == "" or lyric == null %}
+
+<form method="POST" action="/search">
+    <div class="field">
+        <label class="label">Digite a letra</label>
+        <div class="control">
+            <input
+                name="lyric"
+                class="input"
+                type="text"
+                placeholder="Letra da música"
+            />
+        </div>
+    </div>
+
+    <div class="field is-grouped" style="width: 100%">
+        <div class="control" style="width: 100%">
+            <input
+                class="button primary"
+                style="width: 100%"
+                type="submit"
+                value="Enviar"
+            />
+        </div>
+    </div>
+</form>
+{% endif %} {% endblock main %}

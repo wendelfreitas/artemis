@@ -1,0 +1,13 @@
+[default]
+DEBUG = false
+FLASK_ADMIN_SWATCH = "cerulean"
+
+[development]
+DEBUG = true
+SQLALCHEMY_DATABASE_URI = "sqlite:///artemis.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+ADMIN_NAME = "Artemis MusIcA (Dev)"
+
+[production]
+SQLALCHEMY_DATABASE_URI = "mysql:///artemis.db"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
